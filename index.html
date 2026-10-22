@@ -1,1 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Examen de Branding | U. de Lima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #ea580c;
+      --primary-light: #ffedd5;
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-card: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #374151;
+      --success: #10b981;
+      --error: #ef4444;
+      --accent: #38bdf8;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 24px;
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title span {
+      color: var(--primary);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 28px auto 0;
+      padding: 0 20px;
+    }
+
+    .filter-wrapper {
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-chip.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    /* VUE THEORIE */
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .card p, .card ul {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    .formula-box {
+      background: var(--surface-card);
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 4px;
+      font-style: italic;
+      color: #e5e7eb;
+      font-size: 0.88rem;
+    }
+
+    /* VUE QUIZ */
+    .quiz-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--surface-card);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .option-btn {
+      background: var(--surface-card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: left;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(249, 115, 22, 0.1);
+    }
+
+    .option-btn.correct {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--error);
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    .feedback-box {
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .feedback-box.correct {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      color: #d1fae5;
+    }
+
+    .feedback-box.wrong {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--error);
+      color: #fee2e2;
+    }
+
+    .action-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      float: right;
+      transition: background 0.2s;
+    }
+
+    .action-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .results-screen {
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    .score-badge {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="brand-title">
+        U. de Lima <span>Branding S1-S7</span>
+      </div>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchView('theory')">📚 Fichas de Teoría</button>
+        <button class="tab-btn" onclick="switchView('quiz')">📝 Simulador de Examen</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="filter-wrapper" id="filterContainer">
+      <button class="filter-chip active" onclick="filterContent('all')">Todos los temas</button>
+      <button class="filter-chip" onclick="filterContent('t1')">S1: La Marca</button>
+      <button class="filter-chip" onclick="filterContent('t2')">S2: Posicionamiento</button>
+      <button class="filter-chip" onclick="filterContent('t3')">S3-S4: CBBE / Keller</button>
+      <button class="filter-chip" onclick="filterContent('t5')">S5: MKT Mix I (P, P, D)</button>
+      <button class="filter-chip" onclick="filterContent('t6')">S6: Comunicaciones & Alianzas</button>
+      <button class="filter-chip" onclick="filterContent('t7')">S7: Medición del Desempeño</button>
+    </div>
+
+    <!-- SECCION TEORIA -->
+    <section id="theoryView">
+      <div class="theory-grid" id="theoryCardsContainer"></div>
+    </section>
+
+    <!-- SECCION QUIZ -->
+    <section id="quizView" style="display: none;">
+      <div class="quiz-container">
+        <div id="quizGame">
+          <div class="quiz-meta">
+            <span id="topicIndicator">Tema</span>
+            <span id="counterIndicator">Pregunta 1/X</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <h2 class="question-title" id="questionText">Cargando pregunta...</h2>
+          <div class="options-list" id="optionsContainer"></div>
+          <div class="feedback-box" id="feedbackContainer"></div>
+          <button class="action-btn" id="nextBtn" style="display: none;" onclick="nextQuestion()">Siguiente →</button>
+          <div style="clear: both;"></div>
+        </div>
+
+        <div id="quizResult" class="results-screen" style="display: none;">
+          <h2>¡Simulación completada!</h2>
+          <div class="score-badge" id="scoreDisplay">0/0</div>
+          <p id="scoreMessage" style="color: var(--text-muted); margin-bottom: 24px;"></p>
+          <button class="action-btn" style="float: none;" onclick="restartQuiz()">Reiniciar evaluación</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const theoryData = [
+      {
+        theme: 't1',
+        tag: 'Semana 1 · Conceptos Clave',
+        title: 'Definición de Marca & Diferenciación',
+        content: `
+          <p><strong>Definición AMA:</strong> Nombre, término, signo, símbolo, diseño o combinación que identifica los bienes/servicios y los diferencia de los competidores.</p>
+          <p><strong>Kevin Keller:</strong> Una marca es más que un producto físico; crea conciencia, reputación y prominencia. Genera dimensiones que la distinguen de alternativas idénticas.</p>
+          <p><strong>Etimología:</strong> "Brand" proviene de la voz nórdica antigua <em>brandr</em> ("quemar").</p>
+          <p><strong>Elementos de marca:</strong> Nombre (parte pronunciable), Isotipo (emblema gráfico no pronunciable), Logotipo (representación gráfica tipográfica), Colores, Personaje y Slogan.</p>
+        `
+      },
+      {
+        theme: 't2',
+        tag: 'Semana 2 · Posicionamiento',
+        title: 'POPs, PODs y Declaración',
+        content: `
+          <p><strong>Ries & Trout (1982):</strong> "El posicionamiento no es lo que le haces a un producto, es lo que haces en la mente del consumidor".</p>
+          <div class="formula-box">
+            <strong>Declaración (Kotler & Armstrong):</strong><br>
+            "Para (segmento meta), (marca) es (concepto/categoría) que (punto de diferencia/POD), porque (razón para creer)."
+          </div>
+          <ul>
+            <li><strong>Puntos de Paridad (POPs):</strong> Asociaciones compartidas con la categoría para ser considerada una opción legítima.</li>
+            <li><strong>Puntos de Diferencia (PODs):</strong> Atributos o beneficios únicos que generan preferencia y ventaja competitiva.</li>
+          </ul>
+        `
+      },
+      {
+        theme: 't2',
+        tag: 'Semana 2 · Psicología del Consumidor',
+        title: 'Consumer Insights (Cristina Quiñones)',
+        content: `
+          <p>Los insights son "verdades humanas reveladas" que explican el vínculo emocional y profundo entre consumidor y marca.</p>
+          <p><strong>Pirámide de Insights:</strong></p>
+          <ul>
+            <li><strong>Dato:</strong> Hecho u observación estadística (ej. 60% toma café por la mañana).</li>
+            <li><strong>Información:</strong> Razones de comportamiento observadas.</li>
+            <li><strong>Hallazgo:</strong> Comprensión de la necesidad subyacente.</li>
+            <li><strong>Insight:</strong> Verdad revelada compartida y accionable ("Necesito mi café para sentirme listo").</li>
+            <li><strong>Idea de Marketing:</strong> Concepto de branding o innovación derivado.</li>
+          </ul>
+        `
+      },
+      {
+        theme: 't3',
+        tag: 'Semanas 3-4 · Modelo de Keller',
+        title: 'Pirámide de Construcción de Marca (CBBE)',
+        content: `
+          <p>4 etapas y 6 bloques para lograr <strong>Resonancia</strong>:</p>
+          <ul>
+            <li><strong>1. Identidad:</strong> Prominencia (amplitud y profundidad de conciencia, Top of Mind).</li>
+            <li><strong>2. Significado:</strong> Desempeño (ruta funcional) e Imaginería (ruta emocional/perfiles/patrimonio).</li>
+            <li><strong>3. Respuestas:</strong> Juicios (cabeza: calidad, credibilidad, superioridad) y Sentimientos (corazón: calidez, diversión, orgullo).</li>
+            <li><strong>4. Relaciones:</strong> Resonancia (lealtad activa, apego, sentido de comunidad, participación).</li>
+          </ul>
+        `
+      },
+      {
+        theme: 't5',
+        tag: 'Semana 5 · Estrategia de Marketing Mix',
+        title: 'Personalización y Canales Modernos',
+        content: `
+          <p><strong>Nuevas perspectivas de MKT:</strong></p>
+          <ul>
+            <li><strong>Marketing Experiencial:</strong> Entretenimiento, Educación, Estética y Escapismo.</li>
+            <li><strong>Marketing de Permiso (Seth Godin):</strong> Obtener consentimiento voluntario del cliente a cambio de incentivos.</li>
+            <li><strong>Precios:</strong> Fijación basada en valor (calidad + costos + percepción de sobreprecio).</li>
+            <li><strong>Canal Omnicanal vs Multicanal:</strong> La omnicanalidad integra todos los puntos de contacto bajo una experiencia sin fisuras.</li>
+          </ul>
+        `
+      },
+      {
+        theme: 't6',
+        tag: 'Semana 6 · Comunicaciones & Alianzas',
+        title: 'CIM y Apalancamiento Secundario',
+        content: `
+          <p><strong>Criterios CIM (Los 6 C de Keller):</strong> Cobertura, Contribución, Concordancia, Complementariedad, Versatilidad y Costo.</p>
+          <p><strong>Apalancamiento de asociaciones secundarias:</strong> Transferir asociaciones positivas prestadas de otras entidades:</p>
+          <ul>
+            <li>País de origen (ej. Victorinox / Suiza, Chanel / Francia).</li>
+            <li>Marcas compartidas (Co-branding) y Marcas Ingrediente (ej. Intel Inside).</li>
+            <li>Licenciamiento (ej. Lego Star Wars).</li>
+            <li>Patrocinios de eventos y causas (ej. FIFA, Teletón).</li>
+          </ul>
+        `
+      },
+      {
+        theme: 't7',
+        tag: 'Semana 7 · Medición y Control',
+        title: 'Auditoría de Marca & Brand Tracking',
+        content: `
+          <p><strong>Auditoría de Marca:</strong> Ejercicio estratégico integral.</p>
+          <ul>
+            <li><strong>Inventario de Marca:</strong> Perspectiva interna (catalogar elementos, mix, productos actuales).</li>
+            <li><strong>Exploración de Marca:</strong> Perspectiva del consumidor (estudios cualitativos y cuantitativos).</li>
+          </ul>
+          <p><strong>Brand Tracking:</strong> Monitoreo cuantitativo continuo de KPIs a corto plazo (utiliza escalas de 1 a 5 para evaluar los bloques de Keller).</p>
+          <p><strong>Rankings globales:</strong> Interbrand (financiero + fuerza de marca) vs Kantar BrandZ (financiero + percepción del consumidor).</p>
+        `
+      }
+    ];
+
+    const quizQuestions = [
+      {
+        theme: 't1',
+        topic: 'Semana 1 · Fundamentos',
+        question: 'Según Kevin Keller, ¿qué distingue a una marca de un producto genérico o commodity?',
+        options: [
+          'Únicamente contar con un registro legal en la oficina de patentes.',
+          'Dimensiones de valor, reputación y conciencia que la diferencian de ofertas idénticas.',
+          'Venderse exclusivamente a través de canales de autoservicio modernos.',
+          'Tener un precio más bajo que el costo de producción.'
+        ],
+        answer: 1,
+        explanation: 'Keller sostiene que una marca es más que un producto porque agrega dimensiones intangibles (conciencia, reputación y prominencia) que satisfacen la misma necesidad de manera diferenciada.'
+      },
+      {
+        theme: 't2',
+        topic: 'Semana 2 · Posicionamiento',
+        question: 'En el diseño de una estrategia de posicionamiento, ¿qué representa un "Punto de Paridad" (POP)?',
+        options: [
+          'La característica única patentada que ningún competidor puede imitar.',
+          'Un atributo o beneficio que los consumidores consideran necesario para que la marca sea una opción legítima en la categoría.',
+          'El precio más bajo garantizado en el canal minorista.',
+          'La mascota oficial utilizada en las campañas de redes sociales.'
+        ],
+        answer: 1,
+        explanation: 'Los POPs (Points of Parity) son asociaciones no necesariamente exclusivas, sino compartidas con otros jugadores para certificar legitimidad dentro de la categoría.'
+      },
+      {
+        theme: 't2',
+        topic: 'Semana 2 · Personalidad de Marca',
+        question: '¿Cuáles son las 5 dimensiones de la personalidad de marca formuladas por Jennifer Aaker (1997)?',
+        options: [
+          'Racional, Emocional, Social, Espiritual y Funcional.',
+          'Sinceridad, Emoción (Excitement), Competencia, Sofisticación y Rudeza (Ruggedness).',
+          'Identidad, Significado, Respuestas, Relaciones y Resonancia.',
+          'Calidad, Precio, Empaque, Sabor y Distribución.'
+        ],
+        answer: 1,
+        explanation: 'El esquema validado de Jennifer Aaker clasifica la personalidad en Sinceridad, Emoción/Audacia, Competencia, Sofisticación y Rudeza.'
+      },
+      {
+        theme: 't3',
+        topic: 'Semana 3 · Modelo de Keller',
+        question: 'En la pirámide de construcción de marca (CBBE), ¿qué dos bloques conforman el nivel de "Respuestas" (¿Qué pienso y siento por ti?)?',
+        options: [
+          'Desempeño e Imaginería.',
+          'Juicios y Sentimientos.',
+          'Prominencia y Resonancia.',
+          'Atributos y Beneficios.'
+        ],
+        answer: 1,
+        explanation: 'El nivel de Respuestas se subdivide en Juicios (evaluación cognitiva y racional) y Sentimientos (reacciones emocionales y afectivas).'
+      },
+      {
+        theme: 't3',
+        topic: 'Semana 3 · Resonancia de Marca',
+        question: '¿Cuáles son las 4 dimensiones que integran la cima de la pirámide de Keller (Resonancia)?',
+        options: [
+          'Calidad, Credibilidad, Consideración y Superioridad.',
+          'Lealtad de comportamiento, Apego actitudinal, Sentido de comunidad y Compromiso activo.',
+          'Publicidad, Promoción, Precio y Plaza.',
+          'Reconocimiento, Recordación, Top of Mind y Share of Voice.'
+        ],
+        answer: 1,
+        explanation: 'La resonancia exige lealtad de compra repetida, apego psicológico intenso, conexión con otros usuarios (comunidad) y participación activa (interés y recomendación).'
+      },
+      {
+        theme: 't5',
+        topic: 'Semana 5 · Implementación MKT',
+        question: 'Según Seth Godin, ¿cuál es el principio fundamental del Marketing de Permisos?',
+        options: [
+          'Interrumpir al mayor número de televidentes posible con avisos de alto impacto.',
+          'Obtener el consentimiento voluntario del consumidor a través de incentivos claros antes de enviar mensajes comerciales.',
+          'Vender bases de datos de correos a empresas terceras.',
+          'Imponer condiciones de compra obligatorias en tiendas físicas.'
+        ],
+        answer: 1,
+        explanation: 'El marketing de permiso reemplaza al marketing de interrupción al exigir que el usuario consienta explícitamente recibir comunicaciones relevantes.'
+      },
+      {
+        theme: 't5',
+        topic: 'Semana 5 · Canales de Distribución',
+        question: '¿Cuál es la diferencia sustancial entre una estrategia Multicanal y una Omnicanal?',
+        options: [
+          'La multicanalidad usa solo internet y la omnicanalidad solo tiendas físicas.',
+          'La multicanalidad opera canales aislados sin interconexión, mientras que la omnicanalidad integra todos los puntos de contacto bajo una misma experiencia fluida.',
+          'La omnicanalidad es exclusiva de marcas de lujo.',
+          'No existe diferencia, son sinónimos técnicos exactos.'
+        ],
+        answer: 1,
+        explanation: 'La omnicanalidad sincroniza inventarios, datos de cliente y políticas de atención para que el usuario pueda transitar entre la tienda física, la web y la app sin fricciones.'
+      },
+      {
+        theme: 't6',
+        topic: 'Semana 6 · Comunicaciones Integradas',
+        question: 'En el diseño de programas CIM (Comunicaciones Integradas de Marketing), ¿a qué se refiere el criterio de "Concordancia"?',
+        options: [
+          'A que el costo por contacto sea idéntico en todos los medios.',
+          'A que el mensaje y la imagen transmitidos sean consistentes y coherentes en todas las plataformas utilizadas.',
+          'A utilizar únicamente influencers con más de un millón de seguidores.',
+          'A invertir el 100% del presupuesto en televisión.'
+        ],
+        answer: 1,
+        explanation: 'La concordancia asegura que independientemente de la herramienta (digital, eventos, vía pública), la esencia del posicionamiento de la marca se mantenga unificada.'
+      },
+      {
+        theme: 't6',
+        topic: 'Semana 6 · Asociaciones Secundarias',
+        question: '¿Qué fenómeno de apalancamiento secundario ocurre con el caso "Intel Inside" en computadoras personales?',
+        options: [
+          'Licenciamiento de personajes infantiles.',
+          'Estrategia de Marca Ingrediente (Ingredient Branding).',
+          'Apalancamiento por país de origen exclusivo.',
+          'Marketing de guerrilla.'
+        ],
+        answer: 1,
+        explanation: 'Intel Inside es el ejemplo canónico de marca ingrediente, donde un componente genera confianza y valor diferencial transferido al producto anfitrión (computadora).'
+      },
+      {
+        theme: 't7',
+        topic: 'Semana 7 · Medición del Desempeño',
+        question: '¿Cuáles son los dos componentes principales de una Auditoría de Marca (Brand Audit)?',
+        options: [
+          'Flujo de caja e Inventario de almacén físico.',
+          'Inventario de Marca (visión interna/empresa) y Exploración de Marca (visión externa/consumidor).',
+          'Publicidad pagada y Relaciones públicas.',
+          'Share de mercado y Balance contable anual.'
+        ],
+        answer: 1,
+        explanation: 'La auditoría de marca diagnostica la salud estratégica contrastando el Inventario de Marca (qué hace y vende la empresa) con la Exploración de Marca (qué percibe y siente el cliente).'
+      },
+      {
+        theme: 't7',
+        topic: 'Semana 7 · Brand Tracking',
+        question: 'A diferencia de una Auditoría de Marca ocasional, los Estudios de Seguimiento (Brand Tracking) se caracterizan por:',
+        options: [
+          'Ser estudios cualitatifs que se aplican cada diez años.',
+          'Ser mediciones cuantitativas continuas y periódicas para monitorear KPIs y la efectividad de los programas de marketing a corto plazo.',
+          'Centrarse únicamente en entrevistar a los directores de la empresa.',
+          'Servir solo para calcular el impuesto a la renta.'
+        ],
+        answer: 1,
+        explanation: 'El Brand Tracking recopila métricas cuantitativas periódicas (recordación, juicios, lealtad) para validar si las acciones tácticas del día a día cumplen los objetivos del posicionamiento.'
+      }
+    ];
+
+    let currentFilter = 'all';
+    let filteredQuestions = [...quizQuestions];
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderTheoryCards() {
+      const container = document.getElementById('theoryCardsContainer');
+      container.innerHTML = '';
+      
+      const cards = currentFilter === 'all' 
+        ? theoryData 
+        : theoryData.filter(item => item.theme === currentFilter);
+
+      if (cards.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No hay fichas teóricas para este filtro específico.</p>';
+        return;
+      }
+
+      cards.forEach(c => {
+        const el = document.createElement('div');
+        el.className = 'card';
+        el.innerHTML = `
+          <span class="card-tag">${c.tag}</span>
+          <h3>${c.title}</h3>
+          <div>${c.content}</div>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    function switchView(view) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+
+      if (view === 'theory') {
+        tabs[0].classList.add('active');
+        document.getElementById('theoryView').style.display = 'block';
+        document.getElementById('quizView').style.display = 'none';
+        renderTheoryCards();
+      } else {
+        tabs[1].classList.add('active');
+        document.getElementById('theoryView').style.display = 'none';
+        document.getElementById('quizView').style.display = 'block';
+        startQuizSession();
+      }
+    }
+
+    function filterContent(theme) {
+      currentFilter = theme;
+      const chips = document.querySelectorAll('.filter-chip');
+      chips.forEach(c => c.classList.remove('active'));
+      event.target.classList.add('active');
+
+      renderTheoryCards();
+
+      filteredQuestions = theme === 'all' 
+        ? [...quizQuestions] 
+        : quizQuestions.filter(q => q.theme === theme);
+      
+      startQuizSession();
+    }
+
+    function startQuizSession() {
+      currentIndex = 0;
+      score = 0;
+      answered = false;
+      document.getElementById('quizGame').style.display = 'block';
+      document.getElementById('quizResult').style.display = 'none';
+      
+      if (filteredQuestions.length === 0) {
+        document.getElementById('questionText').innerText = 'No hay preguntas para este filtro.';
+        document.getElementById('optionsContainer').innerHTML = '';
+        document.getElementById('counterIndicator').innerText = '0/0';
+        return;
+      }
+
+      // Mélanger les questions
+      filteredQuestions.sort(() => Math.random() - 0.5);
+      showQuestion();
+    }
+
+    function showQuestion() {
+      answered = false;
+      const q = filteredQuestions[currentIndex];
+      
+      document.getElementById('topicIndicator').innerText = q.topic;
+      document.getElementById('counterIndicator').innerText = `Pregunta ${currentIndex + 1}/${filteredQuestions.length}`;
+      document.getElementById('progressFill').style.width = `${((currentIndex) / filteredQuestions.length) * 100}%`;
+      document.getElementById('questionText').innerText = q.question;
+      
+      const optContainer = document.getElementById('optionsContainer');
+      optContainer.innerHTML = '';
+      
+      const fbBox = document.getElementById('feedbackContainer');
+      fbBox.style.display = 'none';
+      fbBox.className = 'feedback-box';
+      
+      document.getElementById('nextBtn').style.display = 'none';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => selectOption(idx);
+        optContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = filteredQuestions[currentIndex];
+      const buttons = document.querySelectorAll('.option-btn');
+      const fbBox = document.getElementById('feedbackContainer');
+
+      buttons.forEach(b => b.disabled = true);
+
+      if (selectedIdx === q.answer) {
+        score++;
+        buttons[selectedIdx].classList.add('correct');
+        fbBox.classList.add('correct');
+        fbBox.innerHTML = `<strong>¡Correcto!</strong> ${q.explanation}`;
+      } else {
+        buttons[selectedIdx].classList.add('wrong');
+        buttons[q.answer].classList.add('correct');
+        fbBox.classList.add('wrong');
+        fbBox.innerHTML = `<strong>Incorrecto.</strong> ${q.explanation}`;
+      }
+
+      fbBox.style.display = 'block';
+      document.getElementById('nextBtn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+      if (currentIndex < filteredQuestions.length) {
+        showQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quizGame').style.display = 'none';
+      const res = document.getElementById('quizResult');
+      res.style.display = 'block';
+
+      const total = filteredQuestions.length;
+      document.getElementById('scoreDisplay').innerText = `${score}/${total}`;
+      
+      const pct = (score / total) * 100;
+      let msg = '';
+      if (pct >= 85) {
+        msg = '¡Excelente nivel! Tienes los conceptos teóricos y estratégicos dominados para el examen.';
+      } else if (pct >= 60) {
+        msg = 'Buen resultado, pero repasa los conceptos de las semanas intermedias (MKT Mix y Medición).';
+      } else {
+        msg = 'Se sugiere repasar las fichas de teoría antes de volver a intentar la simulación.';
+      }
+      document.getElementById('scoreMessage').innerText = msg;
+    }
+
+    function restartQuiz() {
+      startQuizSession();
+    }
+
+    // Initialisation au chargement
+    renderTheoryCards();
+  </script>
+</body>
+</html>
