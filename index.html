@@ -192,6 +192,7 @@
                 </div>
                 <div class="flex space-x-4">
                     <button onclick="showTab('teoria')" id="tab-teoria" class="tab-btn active">Modelos Visuales</button>
+                    <button onclick="showTab('estrategias')" id="tab-estrategias" class="tab-btn">Estrategias MKT & Portafolio</button>
                     <button onclick="showTab('practica')" id="tab-practica" class="tab-btn">Examen: Matriz Práctica</button>
                 </div>
             </div>
@@ -211,6 +212,7 @@
                     <button class="model-btn" onclick="showModel('espectro', this)">Espectro Relacional (Aaker)</button>
                     <button class="model-btn" onclick="showModel('matriz', this)">Matriz Marca-Producto</button>
                     <button class="model-btn" onclick="showModel('lovemarks', this)">Matriz Lovemarks (Roberts)</button>
+                    <button class="model-btn" onclick="showModel('estrategias', this)">Estrategias MKT</button>
                 </div>
             </div>
 
@@ -304,16 +306,16 @@
                             
                             <!-- Grilla visual -->
                             <div class="grid grid-cols-3 gap-2">
-                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('extension_linea')">Leche Entera<br><span class="text-xs font-bold text-brand-orange">Gloria</span></div>
-                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('extension_categoria')">Panetón<br><span class="text-xs font-bold text-brand-orange">Gloria</span></div>
-                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('extension_categoria')">Atún<br><span class="text-xs font-bold text-brand-orange">Gloria</span></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('extension_linea')">Leche Entera<br><span class="text-xs font-bold text-brand-orange">Ext. de Línea</span></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('extension_categoria')">Atún Gloria<br><span class="text-xs font-bold text-brand-orange">Ext. de Categoría</span></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('insignia')">Coca-Cola<br><span class="text-xs font-bold text-red-600">Marca Insignia</span></div>
                                 
-                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('flanqueadora')">Leche Deslactosada<br><span class="text-xs font-bold text-blue-600">Bonlé</span></div>
-                                <div class="bg-gray-100 rounded"></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('flanqueadora')">Cil (Alicorp)<br><span class="text-xs font-bold text-blue-600">Flanqueadora</span></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('vacalechera')">Gillette (P&G)<br><span class="text-xs font-bold text-gray-600">Vaca Lechera</span></div>
                                 <div class="bg-gray-100 rounded"></div>
                                 
-                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('entrada')">Leche de Soya<br><span class="text-xs font-bold text-green-600">SoyVida</span></div>
-                                <div class="bg-gray-100 rounded"></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('entrada')">Económica<br><span class="text-xs font-bold text-green-600">De Entrada</span></div>
+                                <div class="border-2 border-dashed border-gray-300 bg-gray-50 p-4 rounded text-center cursor-pointer hover:bg-orange-50 hover:border-orange-300" onclick="showInfo('prestigio')">Lexus (Toyota)<br><span class="text-xs font-bold text-purple-600">De Prestigio</span></div>
                                 <div class="bg-gray-100 rounded"></div>
                             </div>
                         </div>
@@ -352,6 +354,33 @@
                         </div>
                     </div>
 
+                    <!-- MODELO 5: ESTRATEGIAS MKT -->
+                    <div id="model-estrategias" class="model-view w-full">
+                        <h2 class="text-xl font-bold text-center mb-6 text-gray-800">Estrategias de Marketing Mix</h2>
+                        <div class="flex flex-col gap-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div onclick="showInfo('mkt_perspectivas')" class="bg-indigo-50 border border-indigo-200 text-indigo-900 p-4 rounded-xl cursor-pointer hover:bg-indigo-100 text-center shadow-sm">
+                                    <h3 class="font-bold">Nuevas Perspectivas</h3>
+                                    <p class="text-xs mt-1">Experiencial, Relacional, Permiso...</p>
+                                </div>
+                                <div onclick="showInfo('mkt_precio')" class="bg-emerald-50 border border-emerald-200 text-emerald-900 p-4 rounded-xl cursor-pointer hover:bg-emerald-100 text-center shadow-sm">
+                                    <h3 class="font-bold">Estrategias de Precio</h3>
+                                    <p class="text-xs mt-1">Valor, Descreme, Penetración...</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div onclick="showInfo('mkt_canales')" class="bg-amber-50 border border-amber-200 text-amber-900 p-4 rounded-xl cursor-pointer hover:bg-amber-100 text-center shadow-sm">
+                                    <h3 class="font-bold">Canales y Distribución</h3>
+                                    <p class="text-xs mt-1">Directos vs Indirectos</p>
+                                </div>
+                                <div onclick="showInfo('mkt_pushpull')" class="bg-rose-50 border border-rose-200 text-rose-900 p-4 rounded-xl cursor-pointer hover:bg-rose-100 text-center shadow-sm">
+                                    <h3 class="font-bold">Estrategia Push & Pull</h3>
+                                    <p class="text-xs mt-1">Incentivos vs Demanda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Info Panel -->
@@ -366,16 +395,73 @@
             </div>
         </section>
 
+        <!-- SECCIÓN NUEVA: ESTRATEGIAS MKT Y PORTAFOLIO -->
+        <section id="sec-estrategias" style="display: none;">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-4">Estrategias de Marketing y Portafolio</h1>
+                <p class="text-gray-600">Repaso rápido de los conceptos clave para el examen.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Nuevas Perspectivas -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-orange mb-3">Nuevas Perspectivas MKT</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li><strong>Marketing Experiencial:</strong> Entretenimiento, Educación, Estética, Escapismo.</li>
+                        <li><strong>Marketing Relacional.</strong></li>
+                        <li><strong>Personalización Masiva.</strong></li>
+                        <li><strong>Marketing de Permiso.</strong></li>
+                    </ul>
+                </div>
+                <!-- Estrategias de Precio -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-orange mb-3">Estrategias de Precio</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li><strong>Fijación basada en el valor:</strong> (equilibrio valor percibido/costos).</li>
+                        <li><strong>Descreme:</strong> (precio alto inicial).</li>
+                        <li><strong>Penetración:</strong> (precio bajo para captar mercado).</li>
+                    </ul>
+                </div>
+                <!-- Canales y Estrategias -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-orange mb-3">Canales y Distribución</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li><strong>Directos:</strong> (tiendas propias, e-commerce) vs <strong>Indirectos:</strong> (minoristas, mayoristas).</li>
+                        <li><strong>Estrategia Push:</strong> Incentivos comerciales al canal/distribuidor para que almacene y empuje el producto.</li>
+                        <li><strong>Estrategia Pull:</strong> Publicidad directa al consumidor final para que demande el producto al canal.</li>
+                    </ul>
+                </div>
+                <!-- Roles de Portafolio -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-orange mb-3">Roles en el Portafolio</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li><strong>Marca Insignia (Flagship):</strong> La principal, más rentable y visible (ej. Coca-Cola).</li>
+                        <li><strong>Marca Flanqueadora (Combatiente):</strong> Protege a la insignia compitiendo en precio contra marcas económicas (ej. Cil frente a Primor).</li>
+                        <li><strong>Vaca Lechera (Cash Cow):</strong> Rentabilidad estable con mínima inversión en marketing (ej. Gillette para P&G).</li>
+                        <li><strong>Económica de entrada:</strong> Atrae nuevos clientes sensibles al precio hacia el portafolio.</li>
+                        <li><strong>De prestigio:</strong> Alta gama que eleva el estatus y la imagen del portafolio (ej. Lexus para Toyota).</li>
+                    </ul>
+                </div>
+                <!-- Matriz Marca-Producto y Extensiones -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-brand-orange mb-3">Matriz Marca-Producto y Extensiones</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+                        <li><strong>Amplitud:</strong> Número de categorías atendidas por la empresa.</li>
+                        <li><strong>Profundidad:</strong> Número de marcas que compiten en una misma categoría (riesgo: canibalización).</li>
+                        <li><strong>Extensión de línea:</strong> Nueva presentación/variante dentro de la categoría actual (ej. Gloria Actibio).</li>
+                        <li><strong>Extensión de categoría:</strong> Ingreso a una categoría nueva con la marca madre (ej. Atún Gloria).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <!-- SECCIÓN 2: EXAMEN PRÁCTICO MATRIZ -->
-        <section id="sec-practica" class="hidden">
+        <section id="sec-practica" style="display: none;">
             <div class="mb-8">
                 <h1 class="text-3xl font-bold mb-4">Simulador de Examen: Matriz de Integración</h1>
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <h3 class="font-bold text-blue-800">El Caso: Lanzamiento de "Andina Boost"</h3>
+                    <h3 class="font-bold text-blue-800">Instrucciones</h3>
                     <p class="text-blue-900 mt-1 text-sm">
-                        Una empresa peruana lanza <strong>"Andina Boost"</strong>, un té helado funcional a base de camu camu y maca. El producto tiene excelente calidad y beneficios antioxidantes comprobados, pero nadie lo conoce y los consumidores dudan de su sabor.
-                        <br><br>
-                        <strong>Tu misión:</strong> Completa la matriz estratégica (idéntica a la proyectada en clase) seleccionando las opciones correctas para alinear la etapa de Keller, la táctica de marketing y la métrica de desempeño.
+                        Selecciona la opción correcta en cada menú desplegable para formar una matriz lógica. Las preguntas de medición corresponden <strong>exactamente a la teoría de Keller</strong> vista en clase.
                     </p>
                 </div>
             </div>
@@ -384,101 +470,134 @@
                 <table class="matrix-table min-w-full">
                     <thead>
                         <tr>
-                            <th style="width: 10%;">Etapa (Keller)</th>
-                            <th style="width: 18%;">Objetivo Brand Equity</th>
-                            <th style="width: 18%;">Programa de MKT (Táctica)</th>
-                            <th style="width: 18%;">Objetivo de la Acción</th>
-                            <th style="width: 15%;">Objetivo a Medir</th>
-                            <th style="width: 21%;">Pregunta de Tracking (1 a 5)</th>
+                            <th style="width: 12%;">Etapa (Keller)</th>
+                            <th style="width: 25%;">Objetivo a Medir / Significado</th>
+                            <th style="width: 63%;">Pregunta de Tracking Cuantitativo (Elige la correcta)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Fila 1: Identidad -->
                         <tr class="bg-gray-50">
-                            <td class="font-bold text-center align-middle">IDENTIDAD</td>
+                            <td class="font-bold text-center align-middle text-orange-600">PROMINENCIA<br><span class="text-xs text-gray-500">Identidad / Notoriedad</span></td>
                             <td>
                                 <select id="q1-objbe" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="wrong">Generar comunidad exclusiva de fans activos.</option>
-                                    <option value="correct">Lograr reconocimiento visual en PDV y alta recordación en la categoría.</option>
-                                    <option value="wrong">Comunicar que el producto es superior a los tés industriales.</option>
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="wrong">Naturaleza de la relación y el nivel de sincronía psicológica.</option>
+                                    <option value="correct">Qué tan fácil y frecuente la marca viene a la mente.</option>
+                                    <option value="wrong">Respuestas y reacciones afectivas que la marca evoca.</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="q1-tactica" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="correct">Diseño de empaque con colores andinos llamativos y cabeceras de góndola.</option>
-                                    <option value="wrong">Programa de fidelidad con tarjeta de puntos.</option>
-                                    <option value="wrong">Donación del 10% de las ventas a una ONG.</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="q1-objaccion" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="wrong">Lograr que el cliente recomiende la marca a su familia.</option>
-                                    <option value="wrong">Justificar un precio premium muy alto.</option>
-                                    <option value="correct">Facilitar la identificación rápida del producto frente a la competencia.</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="q1-medir" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="correct">Conciencia de Marca (Reconocimiento/Recordación)</option>
-                                    <option value="wrong">Lealtad de comportamiento (Recompra)</option>
-                                    <option value="wrong">Calidad percibida</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="q1-pregunta" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="wrong">Del 1 al 5, ¿esta marca le da sensación de seguridad?</option>
-                                    <option value="correct">En la categoría de tés helados, ¿qué marcas recuerda?</option>
-                                    <option value="wrong">Del 1 al 5, ¿considera a la marca como líder en calidad?</option>
+                                <select id="q1-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="wrong">Del 1 al 5, ¿esta marca le proporciona una sensación de seguridad o bienestar?</option>
+                                    <option value="correct">¿Qué marcas de esta categoría se le ocurren? / ¿Alguna vez ha escuchado de nuestra marca?</option>
+                                    <option value="wrong">Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?</option>
                                 </select>
                             </td>
                         </tr>
 
-                        <!-- Fila 2: Significado -->
+                        <!-- Fila 2: Desempeño -->
                         <tr>
-                            <td class="font-bold text-center align-middle">SIGNIFICADO</td>
+                            <td class="font-bold text-center align-middle text-blue-600">DESEMPEÑO<br><span class="text-xs text-gray-500">Significado (Racional)</span></td>
                             <td>
                                 <select id="q2-objbe" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="correct">Establecer POD funcional (sabor natural y energía) e imaginería de vida sana.</option>
-                                    <option value="wrong">Lograr que la gente sepa que la marca existe.</option>
-                                    <option value="wrong">Proteger la marca de imitaciones legales.</option>
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="correct">Qué tan bien satisface el producto las necesidades básicas.</option>
+                                    <option value="wrong">Qué tan fácil y frecuente la marca viene a la mente.</option>
+                                    <option value="wrong">Los aspectos psicológicos y sociales de la marca.</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="q2-tactica" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="wrong">Poner el logo más grande en la etiqueta.</option>
-                                    <option value="correct">Campaña en redes sociales con influencers de fitness explicando los beneficios y sabor.</option>
-                                    <option value="wrong">Crear una submarca económica para competir en precio.</option>
+                                <select id="q2-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="correct">Del 1 al 5, ¿qué tan bien ofrece esta marca las funciones básicas de la categoría y qué tan confiable es?</option>
+                                    <option value="wrong">Del 1 al 5: Me considero totalmente leal a esta marca y la compraría aunque suba de precio.</option>
+                                    <option value="wrong">Del 1 al 5, ¿siente que esta marca representa su estilo de vida o sus valores?</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- Fila 3: Imaginería -->
+                        <tr class="bg-gray-50">
+                            <td class="font-bold text-center align-middle text-indigo-600">IMAGINERÍA<br><span class="text-xs text-gray-500">Significado (Emocional)</span></td>
+                            <td>
+                                <select id="q3-objbe" class="matrix-select">
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="wrong">Opiniones personales y racionales del cliente sobre la marca.</option>
+                                    <option value="correct">Los aspectos psicológicos y sociales de la marca.</option>
+                                    <option value="wrong">Qué tan bien satisface el producto las necesidades básicas.</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="q2-objaccion" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="correct">Comunicar atributos clave (ingredientes y sabor) construyendo el perfil de la marca.</option>
-                                    <option value="wrong">Lograr que la botella resalte más en la oscuridad.</option>
-                                    <option value="wrong">Crear un sentido de pertenencia a un club exclusivo.</option>
+                                <select id="q3-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="wrong">Del 1 al 5, ¿esta marca le proporciona una sensación de seguridad o bienestar?</option>
+                                    <option value="wrong">Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?</option>
+                                    <option value="correct">Del 1 al 5, ¿siente que esta marca representa su estilo de vida o sus valores?</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- Fila 4: Juicios -->
+                        <tr>
+                            <td class="font-bold text-center align-middle text-purple-600">JUICIOS<br><span class="text-xs text-gray-500">Respuestas (Cabeza)</span></td>
+                            <td>
+                                <select id="q4-objbe" class="matrix-select">
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="wrong">Qué tan fácil y frecuente la marca viene a la mente.</option>
+                                    <option value="wrong">Naturaleza de la relación y el nivel de sincronía psicológica.</option>
+                                    <option value="correct">Opiniones personales y racionales del cliente sobre la marca.</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="q2-medir" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="wrong">Resonancia y Apego</option>
-                                    <option value="correct">Desempeño e Imaginería</option>
-                                    <option value="wrong">Top of Mind</option>
+                                <select id="q4-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="correct">Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?</option>
+                                    <option value="wrong">¿Qué marcas de esta categoría se le ocurren?</option>
+                                    <option value="wrong">Del 1 al 5: Me considero totalmente leal a esta marca y la compraría aunque suba de precio.</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- Fila 5: Sentimientos -->
+                        <tr class="bg-gray-50">
+                            <td class="font-bold text-center align-middle text-pink-600">SENTIMIENTOS<br><span class="text-xs text-gray-500">Respuestas (Corazón)</span></td>
+                            <td>
+                                <select id="q5-objbe" class="matrix-select">
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="correct">Respuestas y reacciones afectivas que la marca evoca.</option>
+                                    <option value="wrong">Los aspectos psicológicos y sociales de la marca.</option>
+                                    <option value="wrong">Opiniones personales y racionales del cliente sobre la marca.</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="q2-pregunta" class="matrix-select">
-                                    <option value="" disabled selected>Selecciona...</option>
-                                    <option value="correct">Del 1 al 5, ¿qué tan de acuerdo está con que el producto tiene ingredientes de alta calidad y buen sabor?</option>
-                                    <option value="wrong">Del 1 al 5, ¿compraría la marca sin importar el precio?</option>
-                                    <option value="wrong">¿Cuál fue el último té que compró?</option>
+                                <select id="q5-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="wrong">Del 1 al 5, ¿qué tan bien ofrece esta marca las funciones básicas de la categoría?</option>
+                                    <option value="correct">Del 1 al 5, ¿esta marca le proporciona una sensación de seguridad o bienestar?</option>
+                                    <option value="wrong">Del 1 al 5, ¿siente que esta marca representa su estilo de vida o sus valores?</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- Fila 6: Resonancia -->
+                        <tr>
+                            <td class="font-bold text-center align-middle text-emerald-600">RESONANCIA<br><span class="text-xs text-gray-500">Relaciones (¿Qué hay de ti y de mí?)</span></td>
+                            <td>
+                                <select id="q6-objbe" class="matrix-select">
+                                    <option value="" disabled selected>Selecciona el objetivo...</option>
+                                    <option value="wrong">Respuestas y reacciones afectivas que la marca evoca.</option>
+                                    <option value="correct">Naturaleza de la relación y el nivel de sincronía psicológica (lealtad, apego, comunidad).</option>
+                                    <option value="wrong">Qué tan fácil y frecuente la marca viene a la mente.</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="q6-pregunta" class="matrix-select font-medium text-gray-800">
+                                    <option value="" disabled selected>Selecciona la pregunta de medición...</option>
+                                    <option value="wrong">Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?</option>
+                                    <option value="wrong">¿Qué marcas de esta categoría se le ocurren?</option>
+                                    <option value="correct">Del 1 al 5: Me considero totalmente leal a esta marca y la compraría aunque suba de precio.</option>
                                 </select>
                             </td>
                         </tr>
@@ -497,48 +616,60 @@
     </main>
 
     <script>
+        // LÓGICA DE PESTAÑAS (NAVEGACIÓN)
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            document.getElementById('sec-teoria').style.display = 'none';
+            document.getElementById('sec-estrategias').style.display = 'none';
+            document.getElementById('sec-practica').style.display = 'none';
+            
+            document.getElementById('sec-' + tabId).style.display = 'block';
+        }
+
         // DATA DE LOS MODELOS VISUALES
         const modelData = {
             // PIRÁMIDE DE KELLER
             prominencia: {
                 tag: "Pirámide VCMBC (Nivel 1)",
-                title: "PROMINENCIA (Identidad)",
-                desc: "Es la base de la pirámide. Mide la <strong>Conciencia de Marca (Awareness)</strong>: qué tan fácil y frecuente la marca viene a la mente.",
+                title: "PROMINENCIA (Identidad / Notoriedad)",
+                desc: "Qué tan fácil y frecuente la marca viene a la mente.",
                 points: [
                     "<strong>Amplitud:</strong> Variedad de situaciones de compra/uso donde se recuerda.",
                     "<strong>Profundidad:</strong> Rapidez con la que se recuerda (Top of Mind)."
                 ],
                 tactics: "Diseño de elementos de identidad (Logo, Empaque, Colores), publicidad masiva de exposición y presencia en punto de venta (PDV).",
-                question: "<em>¿Qué marcas de esta categoría se le ocurren? / ¿Alguna vez ha escuchado de nuestra marca?</em>"
+                question: "¿Qué marcas de esta categoría se le ocurren? / ¿Alguna vez ha escuchado de nuestra marca?"
             },
             desempeno: {
                 tag: "Pirámide VCMBC (Nivel 2)",
                 title: "DESEMPEÑO (Significado Racional)",
-                desc: "Ruta funcional. Define qué tan bien satisface el producto las necesidades básicas y utilitarias del consumidor.",
+                desc: "Qué tan bien satisface el producto las necesidades básicas.",
                 points: [
                     "Características primarias y secundarias.",
                     "Confiabilidad, durabilidad y servicio.",
                     "Efectividad y eficiencia, Estilo, diseño y Precio."
                 ],
                 tactics: "Campañas demostrativas, pruebas de producto (sampling), comunicación de ingredientes funcionales.",
-                question: "<em>Del 1 al 5, ¿qué tan bien ofrece esta marca las funciones básicas de la categoría y qué tan confiable es?</em>"
+                question: "Del 1 al 5, ¿qué tan bien ofrece esta marca las funciones básicas de la categoría y qué tan confiable es?"
             },
             imagineria: {
                 tag: "Pirámide VCMBC (Nivel 2)",
                 title: "IMAGINERÍA (Significado Emocional)",
-                desc: "Ruta extrínseca. Se refiere a los aspectos psicológicos y sociales de la marca.",
+                desc: "Los aspectos psicológicos y sociales de la marca.",
                 points: [
                     "Perfil del usuario (¿quién la usa?).",
                     "Situaciones de compra y uso.",
                     "Personalidad, valores, historia y herencia."
                 ],
                 tactics: "Marketing de estilo de vida, selección de embajadores, publicidad narrativa (storytelling).",
-                question: "<em>Del 1 al 5, ¿siente que esta marca representa su estilo de vida o sus valores?</em>"
+                question: "Del 1 al 5, ¿siente que esta marca representa su estilo de vida o sus valores?"
             },
             juicios: {
                 tag: "Pirámide VCMBC (Nivel 3)",
-                title: "JUICIOS (Respuesta - Cabeza)",
-                desc: "Evaluaciones y opiniones personales y racionales del cliente sobre la marca.",
+                title: "JUICIOS (Respuestas - Cabeza)",
+                desc: "Opiniones personales y racionales del cliente sobre la marca.",
                 points: [
                     "<strong>Calidad:</strong> Percepción de valor general.",
                     "<strong>Credibilidad:</strong> Confianza en la empresa.",
@@ -546,23 +677,23 @@
                     "<strong>Superioridad:</strong> Ventaja frente a la competencia."
                 ],
                 tactics: "Relaciones públicas, reseñas verificadas, avales de expertos y publicidad comparativa.",
-                question: "<em>Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?</em>"
+                question: "Del 1 al 5, ¿considera que este producto es de calidad superior frente a la competencia?"
             },
             sentimientos: {
                 tag: "Pirámide VCMBC (Nivel 3)",
-                title: "SENTIMIENTOS (Respuesta - Corazón)",
-                desc: "Respuestas y reacciones afectivas que la marca evoca en el consumidor.",
+                title: "SENTIMIENTOS (Respuestas - Corazón)",
+                desc: "Respuestas y reacciones afectivas que la marca evoca.",
                 points: [
                     "Calidez, diversión, emoción.",
                     "Seguridad, aprobación social y autorrespeto."
                 ],
                 tactics: "Branding Emocional y Sensorial (gestión de los 5 sentidos), activaciones BTL emocionales.",
-                question: "<em>Del 1 al 5, ¿esta marca le proporciona una sensación de seguridad o bienestar?</em>"
+                question: "Del 1 al 5, ¿esta marca le proporciona una sensación de seguridad o bienestar?"
             },
             resonancia: {
                 tag: "Pirámide VCMBC (Nivel 4)",
-                title: "RESONANCIA (Relaciones)",
-                desc: "La cima absoluta. Representa la naturaleza de la relación y el nivel de sincronía psicológica.",
+                title: "RESONANCIA (Relaciones - ¿Qué hay de ti y de mí?)",
+                desc: "Naturaleza de la relación y el nivel de sincronía psicológica (lealtad, apego, comunidad).",
                 points: [
                     "<strong>Lealtad:</strong> Compras repetidas (comportamiento).",
                     "<strong>Apego:</strong> Amor por la marca (actitud).",
@@ -570,54 +701,51 @@
                     "<strong>Compromiso Activo:</strong> Evangelización y defensa."
                 ],
                 tactics: "Programas de lealtad, eventos exclusivos VIP, marketing relacional.",
-                question: "<em>Del 1 al 5: Me considero totalmente leal a esta marca y la compraría aunque suba de precio.</em>"
+                question: "Del 1 al 5: Me considero totalmente leal a esta marca y la compraría aunque suba de precio."
             },
             
             // ESPECTRO RELACIONAL (AAKER)
             branded_house: {
                 tag: "Espectro Relacional (Ch. 9)",
-                title: "Branded House (Modelo Monolítico)",
-                desc: "Una única marca corporativa ampara todos los productos y servicios de la empresa. Todo el valor se concentra en un solo nombre.",
+                title: "Branded House (Monolítico)",
+                desc: "Una sola marca para todo (ej. FedEx, Virgin).",
                 points: [
-                    "<strong>Ventaja:</strong> Máxima eficiencia de inversión en marketing. Lo que beneficia a un producto, beneficia a todos.",
-                    "<strong>Riesgo:</strong> Si un producto fracasa o sufre una crisis de RR.PP., afecta a todo el portafolio.",
-                    "<strong>Ejemplos:</strong> Virgin, FedEx, BMW."
+                    "<strong>Ventaja:</strong> Máxima eficiencia de inversión en marketing.",
+                    "<strong>Riesgo:</strong> Si un producto fracasa, afecta a todo el portafolio."
                 ],
                 tactics: "La marca corporativa es la única protagonista en empaques y publicidad.",
                 question: "Estrategia recomendada para presupuestos limitados o marcas fuertemente apalancadas en reputación corporativa."
             },
             submarcas: {
                 tag: "Espectro Relacional (Ch. 9)",
-                title: "Submarcas (Híbrido)",
-                desc: "Combinan la marca corporativa/madre con una submarca. Pueden ser co-conductoras o tener a la marca madre como conductora principal.",
+                title: "Submarcas",
+                desc: "Co-conductoras (Gillette Mach 3) o marca madre como conductora (Audi TT).",
                 points: [
-                    "<strong>Co-conductora:</strong> Ambas marcas pesan igual (Ej. Gillette Mach3).",
-                    "<strong>Marca madre conductora:</strong> La matriz domina, la submarca añade un rasgo (Ej. Audi TT).",
-                    "<strong>Beneficio:</strong> Aprovecha el equity de la matriz pero permite segmentar o añadir atributos de innovación."
+                    "<strong>Co-conductora:</strong> Ambas marcas pesan igual.",
+                    "<strong>Marca madre conductora:</strong> La matriz domina, la submarca añade un rasgo."
                 ],
                 tactics: "Ambos logos conviven en la comunicación, equilibrando el peso visual según quién conduce.",
                 question: "Ideal para estirar la marca madre hacia nuevos nichos o funcionalidades."
             },
             endorsed: {
                 tag: "Espectro Relacional (Ch. 9)",
-                title: "Marcas Respaldadoras (Híbrido)",
-                desc: "La marca de producto tiene su propia identidad pero cuenta con el respaldo visible de la corporación para generar confianza.",
+                title: "Marcas Respaldadoras (Endorsed)",
+                desc: "Respaldo simbólico, nombre vinculado (McNuggets, Kindle) o respaldo fuerte con 'by' (Courtyard by Marriott).",
                 points: [
-                    "<strong>Fuerte:</strong> Usa explícitamente 'by' (Ej. Courtyard by Marriott, Redmi by Xiaomi).",
-                    "<strong>Vinculado:</strong> Comparten prefijos/nombres (Ej. McCafé, McNuggets).",
-                    "<strong>Simbólico:</strong> Solo un logo discreto (Ej. el nido de Nestlé detrás del empaque)."
+                    "<strong>Fuerte:</strong> Usa explícitamente 'by'.",
+                    "<strong>Vinculado:</strong> Comparten prefijos/nombres.",
+                    "<strong>Simbólico:</strong> Solo un logo discreto."
                 ],
                 tactics: "Construir identidad propia para el producto usando el aval corporativo como garantía de calidad.",
                 question: "Permite atacar segmentos diferentes sin confundir el posicionamiento de la marca matriz."
             },
             house_of_brands: {
                 tag: "Espectro Relacional (Ch. 9)",
-                title: "House of Brands (Independientes)",
-                desc: "La empresa maneja un portafolio de marcas totalmente autónomas. La marca corporativa permanece oculta al consumidor final.",
+                title: "House of Brands (Marcas Independientes)",
+                desc: "Marcas autónomas sin vínculo visible a la corporación (ej. P&G con Ariel, Pampers, Pantene).",
                 points: [
-                    "<strong>Ventaja:</strong> Permite dominar góndolas, atacar múltiples nichos y evitar que la crisis de una marca contagie a otra.",
-                    "<strong>Riesgo:</strong> Altísimo costo de marketing, pues cada marca debe construirse desde cero.",
-                    "<strong>Ejemplos:</strong> P&G (Ariel, Pampers, Gillette) o Unilever (Dove, Axe, Rexona)."
+                    "<strong>Ventaja:</strong> Permite dominar góndolas y atacar múltiples nichos.",
+                    "<strong>Riesgo:</strong> Altísimo costo de marketing, cada marca se construye desde cero."
                 ],
                 tactics: "Presupuestos de marketing y posicionamientos totalmente separados y dedicados.",
                 question: "Estrategia clave en consumo masivo (FMCG) para evitar canibalización evidente."
@@ -626,11 +754,10 @@
             // MATRIZ MARCA PRODUCTO
             profundidad: {
                 tag: "Matriz Portafolio (Ch. 9)",
-                title: "Profundidad de Marca",
-                desc: "Se refiere al número y naturaleza de las diferentes marcas que compiten dentro de una <strong>misma línea o categoría</strong> de producto.",
+                title: "Profundidad: Número de marcas que compiten en una misma categoría (riesgo: canibalización)",
+                desc: "Se refiere al número de diferentes marcas que compiten dentro de una <strong>misma línea o categoría</strong>.",
                 points: [
-                    "<strong>Objetivo:</strong> Atacar diferentes segmentos de precios o canales, y ocupar más espacio en góndola.",
-                    "<strong>Riesgo Principal:</strong> La Canibalización (que tus propias marcas se roben ventas entre sí en lugar de quitárselas a la competencia).",
+                    "<strong>Objetivo:</strong> Atacar diferentes segmentos de precios o canales.",
                     "<strong>Ejemplo:</strong> Alicorp vendiendo aceites Primor, Capri y Cil simultáneamente."
                 ],
                 tactics: "Definir roles claros (Insignia, Flanqueadora, Económica) para evitar superposiciones.",
@@ -638,35 +765,31 @@
             },
             amplitud: {
                 tag: "Matriz Portafolio (Ch. 9)",
-                title: "Amplitud de Marca",
+                title: "Amplitud: Número de categorías atendidas por la empresa",
                 desc: "Describe el número de <strong>diferentes categorías de producto</strong> en las que participa una misma marca o la empresa.",
                 points: [
-                    "<strong>Objetivo:</strong> Incrementar la cobertura de mercado, diversificar el riesgo y aprovechar el <em>Brand Equity</em> existente.",
-                    "<strong>Ejemplo:</strong> Blanca Flor expandiéndose de vender solo harina a vender premezclas de keke y panetones."
+                    "<strong>Objetivo:</strong> Incrementar la cobertura de mercado, diversificar el riesgo."
                 ],
                 tactics: "Extensiones de categoría apalancadas en la confianza de la marca madre.",
                 question: "Se evalúa observando las columnas (horizontales) en las que participa la marca."
             },
             extension_linea: {
                 tag: "Estrategias de Portafolio (Ch. 9)",
-                title: "Extensión de Línea",
-                desc: "Aplicar la marca existente a un <strong>nuevo producto dentro de la misma categoría</strong> que ya atiende.",
+                title: "Extensión de línea",
+                desc: "Nueva presentación/variante dentro de la categoría actual (ej. Gloria Actibio).",
                 points: [
                     "Suelen ser nuevos sabores, tamaños, formas o ingredientes añadidos.",
-                    "<strong>Beneficio:</strong> Bajo riesgo y costo reducido de lanzamiento.",
-                    "<strong>Ejemplo:</strong> Leche Gloria deslactosada o Gloria ActiBio."
+                    "<strong>Beneficio:</strong> Bajo riesgo y costo reducido de lanzamiento."
                 ],
                 tactics: "Aprovechar la familiaridad del consumidor para ofrecerle más variedad en su misma necesidad.",
                 question: "Representa un crecimiento en profundidad para esa categoría específica."
             },
             extension_categoria: {
                 tag: "Estrategias de Portafolio (Ch. 9)",
-                title: "Extensión de Categoría",
-                desc: "Aplicar la marca madre para ingresar a una <strong>categoría de productos completamente nueva</strong>.",
+                title: "Extensión de categoría",
+                desc: "Ingreso a una categoría nueva con la marca madre (ej. Atún Gloria).",
                 points: [
-                    "<strong>Beneficio:</strong> Transferencia inmediata de valores y calidad percibida al nuevo rubro.",
-                    "<strong>Riesgo:</strong> Dilución de marca si la nueva categoría no tiene un encaje lógico con la identidad original.",
-                    "<strong>Ejemplo:</strong> Marca Gloria incursionando en conservas de atún o panetones."
+                    "<strong>Beneficio:</strong> Transferencia inmediata de valores y calidad percibida al nuevo rubro."
                 ],
                 tactics: "Asegurar que el punto de paridad/diferencia original sea relevante en la nueva categoría.",
                 question: "Representa un crecimiento en amplitud estratégica."
@@ -674,21 +797,19 @@
             flanqueadora: {
                 tag: "Roles del Portafolio (Ch. 9)",
                 title: "Marca Flanqueadora (Combatiente)",
-                desc: "Marca introducida para proteger a la <strong>Marca Insignia</strong> de ataques de competidores agresivos, usualmente en precio.",
+                desc: "Protege a la insignia compitiendo en precio contra marcas económicas (ej. Cil frente a Primor).",
                 points: [
-                    "Captura clientes sensibles al precio sin deteriorar el estatus premium de la marca principal.",
-                    "<strong>Ejemplo:</strong> Bonlé protegiendo a Gloria clásica, o Cil protegiendo a Primor."
+                    "Captura clientes sensibles al precio sin deteriorar el estatus premium de la marca principal."
                 ],
                 tactics: "Posicionamiento secundario defensivo, con menor inversión publicitaria que la insignia.",
                 question: "Rol fundamental en mercados altamente competitivos y comoditizados."
             },
             entrada: {
                 tag: "Roles del Portafolio (Ch. 9)",
-                title: "Marca Económica de Nivel Básico",
-                desc: "Productos diseñados para <strong>introducir a nuevos consumidores</strong> a la categoría, con precios muy accesibles.",
+                title: "Económica de entrada",
+                desc: "Atrae nuevos clientes sensibles al precio hacia el portafolio.",
                 points: [
-                    "Permite captar al usuario y luego 'migrarlo' a marcas de mayor valor a medida que aumenta su poder adquisitivo.",
-                    "<strong>Ejemplo:</strong> Leche SoyVida o fideos Alianza."
+                    "Permite captar al usuario y luego 'migrarlo' a marcas de mayor valor."
                 ],
                 tactics: "Altos volúmenes de venta con márgenes bajos, optimizando costos logísticos.",
                 question: "Rol de captación de volumen en la base de la pirámide socioeconómica."
@@ -697,48 +818,41 @@
             // MATRIZ LOVEMARKS
             fad: {
                 tag: "Matriz Lovemarks (Ch. 11)",
-                title: "Moda Pasajera (Fad)",
-                desc: "Cuadrante de <strong>Alto Amor, pero Bajo Respeto</strong>.",
+                title: "Moda Pasajera: Bajo respeto / Alto amor",
+                desc: "Generan gran entusiasmo, pasión temporal e impulso irracional.",
                 points: [
-                    "Generan gran entusiasmo, pasión temporal e impulso irracional.",
-                    "Carecen de bases sólidas de calidad, funcionalidad técnica o confiabilidad a largo plazo.",
-                    "<strong>Resultado:</strong> Desaparecen rápidamente cuando la novedad se agota."
+                    "Carecen de bases sólidas de calidad, funcionalidad técnica o confiabilidad a largo plazo."
                 ],
                 tactics: "Suelen apoyarse en viralidad en redes sociales o influencers sin un producto que lo sustente.",
                 question: "No generan lealtad sostenible."
             },
             lovemark: {
                 tag: "Matriz Lovemarks (Ch. 11)",
-                title: "LOVEMARK (Kevin Roberts)",
-                desc: "Cuadrante de <strong>Alto Respeto y Alto Amor</strong>. La meta suprema del Branding Emocional.",
+                title: "LoveMark: Alto respeto / Alto amor",
+                desc: "La meta suprema del Branding Emocional.",
                 points: [
                     "<strong>Respeto:</strong> Confianza absoluta en la calidad, innovación y desempeño técnico.",
-                    "<strong>Amor:</strong> Conexión íntima mediada por Misterio, Sensualidad e Intimidad.",
-                    "<strong>Resultado:</strong> 'Lealtad más allá de la razón'. El cliente se vuelve un evangelizador que defiende y perdona errores."
+                    "<strong>Amor:</strong> Conexión íntima mediada por Misterio, Sensualidad e Intimidad."
                 ],
-                tactics: "Gestión holística que trasciende la función para convertirse en un ícono cultural (Ej. Apple, Patagonia).",
+                tactics: "Gestión holística que trasciende la función para convertirse en un ícono cultural.",
                 question: "Transforma a los consumidores en fans incondicionales."
             },
             commodity: {
                 tag: "Matriz Lovemarks (Ch. 11)",
-                title: "Producto Básico (Commodity)",
-                desc: "Cuadrante de <strong>Bajo Amor y Bajo Respeto</strong>.",
+                title: "Producto Básico: Bajo respeto / Bajo amor",
+                desc: "No hay diferenciación emocional ni excelencia funcional destacable.",
                 points: [
-                    "No hay diferenciación emocional ni excelencia funcional destacable.",
-                    "El único criterio de decisión para el consumidor es el precio o la disponibilidad física.",
-                    "<strong>Resultado:</strong> Guerra de precios constante para sobrevivir."
+                    "El único criterio de decisión para el consumidor es el precio o la disponibilidad física."
                 ],
                 tactics: "Se enfocan exclusivamente en estrategias <em>Push</em> y logística de distribución.",
                 question: "El nivel más bajo de construcción de Brand Equity."
             },
             reconocida: {
                 tag: "Matriz Lovemarks (Ch. 11)",
-                title: "Marca Reconocida",
-                desc: "Cuadrante de <strong>Alto Respeto, pero Bajo Amor</strong>.",
+                title: "Marca Reconocida: Alto respeto / Bajo amor",
+                desc: "El producto es excelente, cumple sus promesas y el cliente confía en la empresa.",
                 points: [
-                    "El producto es excelente, cumple sus promesas y el cliente confía en la empresa (buen Desempeño y Juicios).",
-                    "Falta la conexión afectiva e irracional. El consumidor respeta la marca, pero no la ama.",
-                    "<strong>Resultado:</strong> Si un competidor iguala la calidad y baja el precio, el cliente cambiará de marca sin remordimiento."
+                    "Falta la conexión afectiva e irracional. El consumidor respeta la marca, pero no la ama."
                 ],
                 tactics: "Urge implementar tácticas de <em>Emotional y Sensory Branding</em> para evolucionar a Lovemark.",
                 question: "Típico en marcas tecnológicas tradicionales o servicios B2B eficientes pero fríos."
@@ -818,9 +932,9 @@
 
             const resultadoDiv = document.getElementById('resultado-examen');
             if (correctas === total) {
-                resultadoDiv.innerHTML = `<span class="text-green-600">¡Excelente! ${correctas}/${total}. Matriz perfectamente alineada para el examen.</span>`;
+                resultadoDiv.innerHTML = `<span class="text-green-600">¡Excelente! ${correctas}/${total}. Examen perfectamente alineado con las preguntas exactas de Keller.</span>`;
             } else if (correctas > 0) {
-                resultadoDiv.innerHTML = `<span class="text-orange-500">Tienes ${correctas}/${total} aciertos. Revisa las celdas en rojo: la táctica debe estar alineada al objetivo de esa etapa.</span>`;
+                resultadoDiv.innerHTML = `<span class="text-orange-500">Tienes ${correctas}/${total} aciertos. Revisa las celdas en rojo, las preguntas de medición de cada etapa son específicas y literales.</span>`;
             } else {
                 resultadoDiv.innerHTML = `<span class="text-red-500">Por favor, selecciona opciones en todas las casillas antes de validar.</span>`;
             }
